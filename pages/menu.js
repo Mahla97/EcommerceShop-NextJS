@@ -2,13 +2,29 @@
 import Product from "@/components/products/Product";
 import axios from "axios";
 import { handleError } from "lib/heper";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const MenuPage = ({ products, categories, error }) => {
     useEffect(() => {
         error && toast.error(error)
     }, [error])
+
+    const [productList , setProductList]= useState(products)
+    const handleFilter=async (pageNumber)=>{
+        //  console.log(pageNumber)
+        // console.log (new URLSearchParams(pageNumber).toString())
+
+        try{
+            const res= await axios.get(`https://api.mahlamaleki.ir/api/menu?${new URLSearchParams(pageNumber).toString()}`)
+            // console.log(res.data.data)
+            setProductList(res.data.data)
+        }
+
+        catch(err){
+            toast.error(handleError(err))
+        }
+    }
 
     return (
         <section className="food_section layout_padding">
@@ -71,7 +87,7 @@ const MenuPage = ({ products, categories, error }) => {
                     </div>
                     <div className="col-sm-12 col-lg-9">
                         <div className="row gx-3">
-                            {products && products.products.map((product , index) =>(
+                            {productList && productList.products.map((product , index) =>(
                                 <div key={index} className="col-sm-6 col-lg-4">
                                     <Product product={product} />
                             </div>
@@ -80,9 +96,9 @@ const MenuPage = ({ products, categories, error }) => {
                         </div>
                         <nav className="d-flex justify-content-center mt-5">
                             <ul className="pagination">
-                                {products && products.meta.links.slice(1, -1).map((link , index)=>(
+                                {productList && productList.meta.links.slice(1, -1).map((link , index)=>(
                                     <li key={index} className={link.active ? "page-item active" : "page-item"}>
-                                        <button className="page-link">{link.label}</button></li>
+                                        <button className="page-link" onClick={()=> handleFilter({page : link.label})}>{link.label}</button></li>
                                 ))}
                                 {/* <li className="page-item active"><a className="page-link" href="#">1</a></li>
                                 <li className="page-item"><a className="page-link" href="#">2</a></li>
