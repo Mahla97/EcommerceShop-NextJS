@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { numberFormat } from "lib/heper";
+import { numberFormat } from "lib/helper";
 
 const Product = ({ product }) => {
 

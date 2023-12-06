@@ -1,7 +1,8 @@
 
 import Product from "@/components/products/Product";
 import axios from "axios";
-import { handleError } from "lib/heper";
+import { handleError } from "lib/helper";
+import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -11,14 +12,16 @@ const MenuPage = ({ products, categories, error }) => {
     }, [error])
 
     const [productList , setProductList]= useState(products)
+    const router = useRouter()
     const handleFilter=async (pageNumber)=>{
-        //  console.log(pageNumber)
-        // console.log (new URLSearchParams(pageNumber).toString())
+        // console.log(pageNumber)
+        console.log (new URLSearchParams(pageNumber).toString())
 
         try{
             const res= await axios.get(`https://api.mahlamaleki.ir/api/menu?${new URLSearchParams(pageNumber).toString()}`)
             // console.log(res.data.data)
             setProductList(res.data.data)
+            router.push(`http://localhost:3000/menu?${new URLSearchParams(pageNumber).toString()}` , undefined , {shallow: true})
         }
 
         catch(err){
@@ -114,23 +117,20 @@ const MenuPage = ({ products, categories, error }) => {
 
 export default MenuPage;
 
-
-export async function getServerSideProps() {
-console.log("hi2")
+export async function getServerSideProps({ resolvedUrl }) {
     try {
-        
-        const res= await axios.get("https://api.mahlamaleki.ir/api/menu")
-        const resCat = await axios.get("https://api.mahlamaleki.ir/api/categories")
-        
+        const res1=`https://api.mahlamaleki.ir/api${resolvedUrl}`
+        // console.log(res1)
+        const res= await axios.get(res1)
+        const resCate = await axios.get("https://api.mahlamaleki.ir/api/categories")
+
         return {
             props: {
                 products: res.data.data,
-                categories: resCat.data.data
+                categories: resCate.data.data
             }
         }
-    }
-
-    catch (err) {
+    } catch (err) {
         return {
             props: {
                 error: handleError(err)

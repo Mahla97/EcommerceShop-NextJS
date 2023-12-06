@@ -1,5 +1,5 @@
 import axios from "axios";
-import { handleError } from "lib/heper";
+import { handleError } from "lib/helper";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Image from "next/image";

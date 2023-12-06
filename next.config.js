@@ -4,6 +4,10 @@ const nextConfig = {
   images: {
     domains: ['api.mahlamaleki.ir'],
   },
+  i18n: {
+    locales: ['en-US', 'fr', 'nl-NL'],
+    defaultLocale: 'en-US',
+  }
   }
 
 

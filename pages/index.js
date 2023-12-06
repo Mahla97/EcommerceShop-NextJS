@@ -4,7 +4,7 @@ import Features from "@/components/Features";
 import ProductsTab from "@/components/products/ProductsTab";
 import Slider from "@/components/Slider";
 import axios from "axios";
-import { handleError } from "lib/heper";
+import { handleError } from "lib/helper";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 
