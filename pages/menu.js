@@ -11,6 +11,7 @@ const MenuPage = ({ products, categories, error }) => {
         error && toast.error(error)
     }, [error])
 
+    const [search , setSearch]= useState("")
     const [productList , setProductList]= useState(products)
     const router = useRouter()
     const handleFilter=async (pageNumber)=>{
@@ -37,11 +38,11 @@ const MenuPage = ({ products, categories, error }) => {
                         <div>
                             <label className="form-label">جستجو</label>
                             <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="نام محصول ..."
+                                <input type="text" onChange={(e)=>{setSearch(e.target.value)}} className="form-control" placeholder="نام محصول ..."
                                     aria-label="Recipient's username" aria-describedby="basic-addon2" />
-                                <a href="#" className="input-group-text" id="basic-addon2">
+                                <button onClick={()=> handleFilter({search : search})} className="input-group-text" id="basic-addon2">
                                     <i className="bi bi-search"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <hr />
