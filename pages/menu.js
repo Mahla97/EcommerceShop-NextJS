@@ -22,6 +22,9 @@ const MenuPage = ({ products, categories, error }) => {
         // console.log (new URLSearchParams(currentUrl).toString()) 
         let query={...router.query, ...currentUrl}
 
+        if(!currentUrl.hasOwnProperty('page'))
+        delete query.page
+
         try{
             const res= await axios.get(`https://api.mahlamaleki.ir/api/menu?${new URLSearchParams(query).toString()}`)
             // console.log(res.data.data)
@@ -65,27 +68,27 @@ const MenuPage = ({ products, categories, error }) => {
                         <div>
                             <label className="form-label">مرتب سازی</label>
                             <div className="form-check my-2">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                <input onChange={()=> handleFilter({sortBy : 'max'})}className="form-check-input" checked={router.query.hasOwnProperty('sortBy') && router.query.sortBy=='max'} type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
                                 <label className="form-check-label cursor-pointer" htmlFor="flexRadioDefault1" >
                                     بیشترین قیمت
                                 </label>
                             </div>
                             <div className="form-check my-2">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                                <input onChange={()=> handleFilter({sortBy: 'min'})} className="form-check-input" checked={router.query.hasOwnProperty('sortBy') && router.query.sortBy=='min'} type="radio" name="flexRadioDefault" id="flexRadioDefault2"
                                      />
                                 <label className="form-check-label cursor-pointer" htmlFor="flexRadioDefault2">
                                     کمترین قیمت
                                 </label>
                             </div>
                             <div className="form-check my-2">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+                                <input onChange={()=> handleFilter({sortBy: 'bestseller'})} className="form-check-input" checked={router.query.hasOwnProperty('sortBy') && router.query.sortBy=='bestseller'} type="radio" name="flexRadioDefault" id="flexRadioDefault3"
                                      />
                                 <label className="form-check-label cursor-pointer" htmlFor="flexRadioDefault3">
                                     پرفروش ترین
                                 </label>
                             </div>
                             <div className="form-check my-2">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4"
+                                <input onChange={()=>(handleFilter({sortBy: 'sale'}))} className="form-check-input" cheked={router.query.hasOwnProperty('sortBy') && router.query.sortBy== 'sale'} type="radio" name="flexRadioDefault" id="flexRadioDefault4"
                                      />
                                 <label className="form-check-label cursor-pointer" htmlFor="flexRadioDefault4">
                                     با تخفیف
@@ -93,6 +96,8 @@ const MenuPage = ({ products, categories, error }) => {
                             </div>
                         </div>
                     </div>
+                    {productList && productList.products.length!=0?
+                    <>
                     <div className="col-sm-12 col-lg-9">
                         <div className="row gx-3">
                             {productList && productList.products.map((product , index) =>(
@@ -114,6 +119,16 @@ const MenuPage = ({ products, categories, error }) => {
                             </ul>
                         </nav>
                     </div>
+                    </>
+                    :
+                    <>
+                    <div className="col-sm-12 col-lg-9">
+                    <div className="d-flex justify-content-center align-items-center h-100">
+                        <h3>چیزی پیدا نکردیم. متاسفم! </h3>
+                        </div>
+                    </div>
+                    </>
+                    }
                 </div>
             </div>
         </section>
