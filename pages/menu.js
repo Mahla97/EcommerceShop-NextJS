@@ -2,27 +2,31 @@
 import Product from "@/components/products/Product";
 import axios from "axios";
 import { handleError } from "lib/helper";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const MenuPage = ({ products, categories, error }) => {
+
+    const [search , setSearch]= useState('')
+    const [productList , setProductList]= useState(products)
+    const router = useRouter()
+
     useEffect(() => {
         error && toast.error(error)
     }, [error])
 
-    const [search , setSearch]= useState("")
-    const [productList , setProductList]= useState(products)
-    const router = useRouter()
-    const handleFilter=async (pageNumber)=>{
-        // console.log(pageNumber)
-        console.log (new URLSearchParams(pageNumber).toString())
+    const handleFilter=async (currentUrl)=>{
+        
+        // console.log(currentUrl)
+        // console.log (new URLSearchParams(currentUrl).toString()) 
+        let query={...router.query, ...currentUrl}
 
         try{
-            const res= await axios.get(`https://api.mahlamaleki.ir/api/menu?${new URLSearchParams(pageNumber).toString()}`)
+            const res= await axios.get(`https://api.mahlamaleki.ir/api/menu?${new URLSearchParams(query).toString()}`)
             // console.log(res.data.data)
             setProductList(res.data.data)
-            router.push(`http://localhost:3000/menu?${new URLSearchParams(pageNumber).toString()}` , undefined , {shallow: true})
+            router.push(`http://localhost:3000/menu?${new URLSearchParams(query).toString()}` , undefined , {shallow: true})
         }
 
         catch(err){
@@ -40,7 +44,7 @@ const MenuPage = ({ products, categories, error }) => {
                             <div className="input-group mb-3">
                                 <input type="text" onChange={(e)=>{setSearch(e.target.value)}} className="form-control" placeholder="نام محصول ..."
                                     aria-label="Recipient's username" aria-describedby="basic-addon2" />
-                                <button onClick={()=> handleFilter({search : search})} className="input-group-text" id="basic-addon2">
+                                <button onClick={()=> search!=="" && handleFilter( {search : search})} className="input-group-text" id="basic-addon2">
                                     <i className="bi bi-search"></i>
                                 </button>
                             </div>
@@ -52,7 +56,7 @@ const MenuPage = ({ products, categories, error }) => {
                             </div>
                             <ul>
                                 {categories && categories.map((category, index) => (
-                                    <li key={index} className="my-2 cursor-pointer">{category.name}</li>
+                                    <li key={index} onClick={()=>handleFilter({category : category.id})} className={router.query.hasOwnProperty('category') && router.query.category==category.id ? "my-2 cursor-pointer filter-list-active" : "my-2 cursor-pointer"}>{category.name}</li>
                                 ))}
                                 {/* <li className="my-2 cursor-pointer filter-list-active">پیتزا</li> */}
                             </ul>
