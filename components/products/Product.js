@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { numberFormat } from "lib/helper";
+import Link from "next/link";
 
 const Product = ({ product }) => {
 
     return (
-        <div className="box">
+        <Link href={`/products/${product.slug}`} >
+        <div className="box"> 
             <div>
                 <div className="img-box">
                     <Image className="image-fluid" src={product.primary_image} layout="responsive" placeholder="blur" blurDataURL={product.primary_image_blurDataURL} width={366} height={244} />
@@ -43,6 +45,7 @@ const Product = ({ product }) => {
                 </div>
             </div>
         </div>
+        </Link>
     )
 }
 
