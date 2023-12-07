@@ -13,11 +13,13 @@ const Header = () => {
                 <header className="header_section">
                     <div className="container">
                         <nav className="navbar navbar-expand-lg custom_nav-container">
+                            <Link href="/">
                             <a className="navbar-brand" href="index.html">
                                 <span>
-                                    webprog.io
+                                    PizzaMali
                                 </span>
                             </a>
+                            </Link>
 
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -55,9 +57,9 @@ const Header = () => {
                                             3
                                         </span>
                                     </a>
-                                    <a href="login.html" className="btn-auth">
+                                    {/* <a href="login.html" className="btn-auth">
                                         ورود
-                                    </a>
+                                    </a> */}
                                 </div>
                             </div>
                         </nav>

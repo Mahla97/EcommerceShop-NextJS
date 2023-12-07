@@ -22,7 +22,7 @@ body {
   vertical-align: -0.3em !important;
 }
 .layout_padding {
-  padding: 90px 0;
+  padding: 40px 0;
 }
 
 .layout_padding2 {
@@ -439,7 +439,7 @@ a:focus {
   margin: 0 auto;
   width: 3.75rem;
   height: 3.75rem;
-  background: #222831;
+  background: #ff7225;
   transition: all ease-in-out 0.5s;
   border-radius: 3.125rem;
 }
@@ -472,7 +472,7 @@ a:focus {
 }
 
 .food_section .filters_menu li.active {
-  background-color: #222831;
+  background-color: #ff7225;
   color: #ffffff;
 }
 
@@ -484,11 +484,11 @@ a:focus {
   color: #ffffff;
   border-radius: 15px;
   overflow: hidden;
-  background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
+  background: linear-gradient(to bottom, #f1f2f3 25px, #ff5a00 25px);
 }
 
 .food_section .box .img-box {
-  background-color: #222831;
+  background-color: #ff5a00;
 }
 
 .food_section .box .img-box img {
@@ -499,7 +499,7 @@ a:focus {
 
 .food_section .box .detail-box {
   padding: 25px;
-  background-color: #222831;
+  background-color: #ff5a00;
 }
 
 .food_section .box .detail-box h5 {
@@ -582,7 +582,7 @@ a:focus {
 }
 
 .about_section {
-  background: #222831;
+  background: #ff7225;
   color: #ffffff;
 }
 

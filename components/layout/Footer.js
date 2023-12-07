@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 const Footer = ()=>{
@@ -22,14 +23,14 @@ const Footer = ()=>{
                                 <div className="d-flex justify-content-center">
                                     <i className="bi bi-telephone-fill" aria-hidden="true"></i>
                                     <p className="my-0" style={{direction: "ltr"}}>
-                                        0910 000 0000
+                                        021 22 45 25 20
                                     </p>
                                 </div>
                             </a>
                             <a href="">
                                 <i className="bi bi-envelope-fill"></i>
                                 <span>
-                                    demo@gmail.com
+                                    support@mahlamaleki.ir
                                 </span>
                             </a>
                         </div>
@@ -37,11 +38,13 @@ const Footer = ()=>{
                 </div>
                 <div className="col-md-4 footer-col">
                     <div className="footer_detail">
-                        <a href="" className="footer-logo">
-                            webprog.io
+                        <Link href="/" >
+                        <a className="footer-logo">
+                            PizzaMali
                         </a>
+                        </Link>
                         <p>
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                           بهترین مزه‌ها را در پیتزا ملی بچشید
                         </p>
                         <div className="footer_social">
                             <a href="">
@@ -70,13 +73,13 @@ const Footer = ()=>{
                         هر روز
                     </p>
                     <p>
-                        10.00 صبح تا 12.00 شب
+                        هر ساعت هر دقیقه هر ثانیه
                     </p>
                 </div>
             </div>
             <div className="footer-info">
                 <p>
-                    لورم ایپسوم متن ساختگی با تولید سادگی
+                    پیترا با عشق
                 </p>
             </div>
         </div>

@@ -19,7 +19,7 @@ const Slider = () => {
                                     <div className="col-md-7 col-lg-6">
                                         <div className="detail-box">
                                             <h2 className="mb-3 fw-bold">
-                                                لورم ایپسوم متن ساختگی
+                                               به پیتزا قلی خوش آمدید
                                             </h2>
                                             <p>
                                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
@@ -46,7 +46,7 @@ const Slider = () => {
                                     <div className="col-md-7 col-lg-6">
                                         <div className="detail-box">
                                             <h2 className="mb-3 fw-bold">
-                                                لورم ایپسوم متن ساختگی
+                                                باز هم بگم که خوش آمدید
                                             </h2>
                                             <p>
                                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
@@ -73,7 +73,7 @@ const Slider = () => {
                                     <div className="col-md-7 col-lg-6">
                                         <div className="detail-box">
                                             <h2 className="mb-3 fw-bold">
-                                                لورم ایپسوم متن ساختگی
+                                               هنوزم خوش آمدید
                                             </h2>
                                             <p>
                                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده

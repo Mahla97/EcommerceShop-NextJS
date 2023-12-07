@@ -11,7 +11,7 @@ const About=()=>{
             <div className="row">
                 <div className="col-md-6 ">
                     <div className="img-box">
-                        <Image src={aboutImage} alt="about-image" width={448} height={608} placeholder="blur"/>
+                        <Image src={aboutImage} alt="about-image" width={300} height={300} placeholder="blur"/>
                         {/* <img src="images/about-img.png" alt=""> */}
                     </div>
                 </div>
