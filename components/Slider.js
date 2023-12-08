@@ -19,7 +19,7 @@ const Slider = () => {
                                     <div className="col-md-7 col-lg-6">
                                         <div className="detail-box">
                                             <h2 className="mb-3 fw-bold">
-                                               به پیتزا قلی خوش آمدید
+                                               به پیتزا ملی خوش آمدید
                                             </h2>
                                             <p>
                                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
